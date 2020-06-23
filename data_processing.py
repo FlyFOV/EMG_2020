@@ -47,7 +47,19 @@ class Get_Data(object):
             'T_T': 14,
         }[label]
 
-    def collect_data(self,subject=0,index=[1,2], gesture = all_gesture):
+    #################################################
+    # function name : collect data
+    # Parameter:
+    #           subject : choose the subject of experiment,default choose all the experiment subjects.
+    #           index : choose the trail num of raw data. Mainly designed for choose train and test dataset.
+    #           gesture : choose the hand gesture you want to training.
+    #           time_frame : set the time frame , default 5s. The frequency of sampling data is 4000HZ,
+    #                        which means 0.25ms one line . Range from 0s up to 20s.
+    # description: read raw data from csv file and covert into DataFrame
+    # aurthor: Haotian Fan
+    # Time: 23 June 2020
+    #################################################
+    def collect_data(self,subject=0,index=[1], gesture = all_gesture,time_frame = 5):
         for files in os.listdir(self.directory):
             add_on = False
             label = files[3:6]
@@ -59,15 +71,16 @@ class Get_Data(object):
             if sname == subject and i_num in index and label_num in gesture:
                 add_on = True
             if add_on:
-                print(files)
+
                 databuf = pd.read_csv(self.directory+str(files),header=None,names = self.col)
-                print(databuf)
+
                 databuf.insert(column='gesture',value = label_num,loc=8)
-                print(databuf)
+                databuf = databuf[0:int((time_frame/20)*80000)]
+
                 self.labeled_raw_train_data = pd.concat([self.labeled_raw_train_data,databuf],ignore_index=True)
 
         return self.labeled_raw_train_data
 
-Q = Get_Data()
-print(Q.collect_data(subject=1,gesture = [0]))
+
+
 
