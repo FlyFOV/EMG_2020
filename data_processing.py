@@ -9,7 +9,7 @@ from pathlib import Path
 ############ global variables ###################
 current_path = os.getcwd()
 data_path = str(current_path+'/data/raw/')
-print (data_path)
+figure_path = str(current_path+'/figure/')
 ############ global variables ###################
 
 #################################################
