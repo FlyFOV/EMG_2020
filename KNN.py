@@ -5,10 +5,9 @@ import pandas as pd
 import os
 import data_processing
 
-
 data_father = data_processing.Get_Data()
-raw_data = data_father.collect_data(0,[1,2],[0,1])
-test_data = data_father.collect_data(0,[3],[0,1])
+raw_data = data_father.collect_data(0,[1,2],[0,1,2],time_frame=5)
+test_data = data_father.collect_data(0,[3],[0,1,2],time_frame=5)
 
 train_label = raw_data['gesture'].to_numpy()
 train_data = raw_data.to_numpy()[:,:8]
