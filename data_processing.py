@@ -48,7 +48,18 @@ class Get_Data(object):
             'T_R': 13,
             'T_T': 14,
         }[label]
-
+    def label_data_conversion(self,arr,dimension=15):
+        ans = np.array([])
+        for n in arr:
+            buf = np.array([])
+            pre = n
+            suf = dimension-n-1
+            buf = [0]*pre + [1] + [0]*suf
+            if len(ans):
+                ans = np.vstack((ans,buf[:]))
+            else:
+                ans = buf[:]
+        return ans
     #################################################
     # function name : collect data
     # Parameter:
@@ -98,3 +109,6 @@ class Get_Data(object):
 # print (len(F.window_process(raw_data.to_numpy(),10,5)))
 # print(F.window_process(raw_data.to_numpy(),10,5))
 
+# Q = Get_Data()
+# a = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14]
+# print (Q.label_data_conversion(a))
