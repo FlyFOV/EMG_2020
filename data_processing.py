@@ -5,9 +5,10 @@ import pandas as pd
 import feature_extraction
 import re
 from pathlib import Path
-
+from tensorflow import  keras
 ############ global variables ###################
 current_path = os.getcwd()
+#current_path = current_path = '/content/drive/My Drive/Colab Notebooks/EMG'
 data_path = str(current_path+'/data/raw/')
 figure_path = str(current_path+'/figure/')
 ############ global variables ###################
@@ -87,7 +88,7 @@ class Get_Data(object):
             if add_on:
                 self.raw_train_label = np.append(self.raw_train_label,int(label_num))
                 databuf = pd.read_csv(self.directory+str(files),header=None,names = self.col)
-
+                databuf = keras.utils.normalize(databuf)
                 #databuf.insert(column='gesture',value = label_num,loc=8)
                 databuf = databuf[0:int((time_frame/20)*80000)]
 
