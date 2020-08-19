@@ -19,7 +19,7 @@ For example,to run "knn" method, just open terminal and type the following comma
 python KNN.py
 All other methods have similary process.
 
-It's necessary to methion that to run Kmeans method, there are two files. One is "kmeans.py",this file will collect the origin
+It's necessary to mention that to run Kmeans method, there are two files. One is "kmeans.py",this file will collect the origin
 EMG data and feed it to Kmeans classifier and save the model as a file "kmeans.sav" in your workspace.Another file is "kmeans_process",
 this file calculate the accuracy of K-means clustering method. You have to run "kmeans.py" befor you run "kmeans_process".
 
