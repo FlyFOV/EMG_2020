@@ -1,4 +1,4 @@
-This project is the source code of EMG signal classification based on supervised and unsupervised learning methods of Haotian Fan in Kings College London.
+This project is the source code of EMG signal classification based on supervised and unsupervised learning methods .
 To run the source code, you need to prepare your environment.
 Python is necessary to run the code, version 3.8 is recommended.
 The following libraries are needed:
